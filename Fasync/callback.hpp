@@ -19,7 +19,7 @@ namespace Fasync {
 		}
 
 		template <typename F>
-		void Add(F&& callable) {
+		void Subscribe(F&& callable) {
 			mObservers.push_back(std::forward<F>(callable));
 		}
 
@@ -42,19 +42,19 @@ namespace Fasync {
 
 	template <class... Args, typename F>
 	static inline void Connect(Signal<Args...>* signal, F&& function) {
-		signal->Add(std::forward<F>(function));
+		signal->Subscribe(std::forward<F>(function));
 	}
 
 	template <class... Args, typename T>
 	static inline void Connect(Signal<Args...>* signal, T* target, void (T::* function)(Args...)) {
-		signal->Add([target, function](Args... args) -> void {
+		signal->Subscribe([target, function](Args... args) -> void {
 			(target->*function)(std::forward<Args>(args)...);
 			});
 	}
 
 	template <class... Args, typename T>
 	static inline void Connect(Signal<Args...>* signal, T* target, void (T::* function)(Args...) const) {
-		signal->Add([target, function](Args... args) -> void {
+		signal->Subscribe([target, function](Args... args) -> void {
 			(target->*function)(std::forward<Args>(args)...);
 			});
 	}
