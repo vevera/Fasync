@@ -21,10 +21,9 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{34a6d59b-c1cb-431c-9668-60cafbd37679}</ProjectGuid>
+    <ProjectGuid>{930fb0b5-7310-4826-91d4-fa01ae724fbe}</ProjectGuid>
     <RootNamespace>Fasync</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Fasync</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -130,12 +129,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="debug.hpp" />
-    <ClCompile Include="main.cpp" />
+    <ClInclude Include="..\..\src\callback.hpp" />
+    <ClInclude Include="..\..\src\debug.hpp" />
+    <ClInclude Include="..\..\src\scheduler.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="callback.hpp" />
-    <ClInclude Include="scheduler.hpp" />
+    <ClCompile Include="..\..\src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
