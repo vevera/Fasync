@@ -33,6 +33,8 @@ public:
 class Test2 {
 public:
 	Test2(std::string name) : name_{ name } {}
+	~Test2() { std::cout << "Destructor called: " << name_ << std::endl; }
+
 
 	void doWork(int a, int b) {
 		std::cout << "Test2: " << name_ << " result: " << (a * (a + b)) << std::endl;
@@ -58,21 +60,35 @@ int main(void) {
 	{
 		std::cout << "Signals Example!!!\n";
 
-		Test t;
-
-		Test2 ta("ta");
+		Test2* ta = new Test2("ta");
 		Test2 tb("tb");
 		Test2 tc("tc");
 
+		Test t;
+
 		// A callback assigned to a signal must return void
-		Fasync::Connect(&t.sumSignal, &ta, &Test2::doWork);
+		Fasync::Connect(&t.sumSignal, ta, &Test2::doWork);
 		// A callback argument types must match the signal's definition exactly
 		Fasync::Connect(&t.sumSignal, &tb, &Test2::doWorkConst);
 		// Connect mulSignal to a global function
 		Fasync::Connect(&t.mulSignal, &doWork);
 
-		// Emit a signal with arguments 5 and 2
-		Fasync::Emit(&t.sumSignal, 5, 2);
+		std::vector<std::thread> asyncOperations;
+
+		Fasync::EmitAsyncMulti(asyncOperations, &t.sumSignal, 5, 2);
+		std::cout << "After emit 1!!\n";
+
+		Fasync::EmitAsync(asyncOperations, &t.sumSignal, 13, 3);
+		std::cout << "After emit 2!!\n";
+
+		Fasync::EmitAsyncMulti(asyncOperations, &t.sumSignal, 53, 1);
+		std::cout << "After emit 3!!\n";
+
+		for (auto& op : asyncOperations) {
+			op.join();
+		}
+
+		delete ta;
 	}
 
 	// Scheduler Example
@@ -119,7 +135,7 @@ void func1(double a, double c) {
 		return;
 	}
 
-	size_t n = 1000000000;
+	size_t n = 10000000;
 
 	auto res = a / c;
 	double multiplier = 2.0;

@@ -46,9 +46,7 @@ namespace Fasync {
 		template <typename F, typename... Args>
 		inline void Add(Priority p, F&& task, Args... args) {
 			mSynchronizer.lock();
-
 			mTasks.emplace(p, RoutineWrapper<F, Args...>, new Parameters<F, Args...>{ std::forward<F>(task), std::forward<Args>(args)... });
-
 			mSynchronizer.unlock();
 		}
 
