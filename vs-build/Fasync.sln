@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fasync", "Fasync\Fasync.vcxproj", "{930FB0B5-7310-4826-91D4-FA01AE724FBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{930FB0B5-7310-4826-91D4-FA01AE724FBE}.Debug|x64.ActiveCfg = Debug|x64
+		{930FB0B5-7310-4826-91D4-FA01AE724FBE}.Debug|x64.Build.0 = Debug|x64
+		{930FB0B5-7310-4826-91D4-FA01AE724FBE}.Debug|x86.ActiveCfg = Debug|Win32
+		{930FB0B5-7310-4826-91D4-FA01AE724FBE}.Debug|x86.Build.0 = Debug|Win32
+		{930FB0B5-7310-4826-91D4-FA01AE724FBE}.Release|x64.ActiveCfg = Release|x64
+		{930FB0B5-7310-4826-91D4-FA01AE724FBE}.Release|x64.Build.0 = Release|x64
+		{930FB0B5-7310-4826-91D4-FA01AE724FBE}.Release|x86.ActiveCfg = Release|Win32
+		{930FB0B5-7310-4826-91D4-FA01AE724FBE}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2FE803F9-CF1B-47FE-AF12-1E6EE67A37B3}
+	EndGlobalSection
+EndGlobal
